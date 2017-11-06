@@ -1,7 +1,7 @@
+ 
 <!-- Dentro del siguiente archivo se encuentra una calculadora
 que no está completa. El botón = funciona evaluando la expresión
 que se encuentra en el input.
-
 Se requiere ingresar todos los otros botones de la calculadora
 para que modifiquen el input agregando su valor.
 -->
@@ -13,16 +13,72 @@ para que modifiquen el input agregando su valor.
     <title></title>
   </head>
   <body>
-    <input type="text" name="calculator" value="">
-    <button class="btn" type="button" name="button">1</button>
-    <button class="btn" type="button" name="button">+</button>
-    <button class="result" type="button" name="result">=</button>
-    <script type="text/javascript">
-      var result = document.getElementsByName("result")[0];
-      var calculator = document.getElementsByName("calculator")[0];
-      result.onclick = function(){
-        calculator.value = eval(calculator.value)
+ 
+
+
+    <form name="f1"> 
+     
+    <input type="text" name="txtcaja1">
+    <br>
+    <input type="text" name="txtcaja2" value="0">
+    <br> 
+ 
+
+    
+    <input type="button" onclick="escribir('1')" value="1">
+    <input type="button" onclick="escribir('2')" value="2">
+    <input type="button" onclick="escribir('3')" value="3"> 
+    <input type="button" onclick="escribir('4')" value="4">
+    <input type="button" onclick="escribir('5')" value="5"> <br>
+    <input type="button" onclick="escribir('6')" value="6">
+    <input type="button" onclick="escribir('7')" value="7">
+    <input type="button" onclick="escribir('8')" value="8">
+    <input type="button" onclick="escribir('9')" value="9">
+    <input type="button" onclick="escribir('0')" value="0"> <br>
+    <input type="button" class="arit" onClick="arit('+')" value="+">
+    <input type="button" class="igual" onclick="calcular()" value="=">
+
+ 
+    </form>
+
+
+    <script>
+
+      function escribir(n){
+        var caja2 = document.f1.txtcaja2.value;
+        if (caja2 == "0" && n != "."){ //si la caja comienza en 0
+          cajao = caja2.replace("0", "")
+          document.f1.txtcaja2.value = cajao + n;
+        }
+        else{
+          document.f1.txtcaja2.value = caja2 + n; /*si la caja ya tenía un número agregado */
+        }
       }
+
+      function arit(sigMas){
+        var caja1 = document.f1.txtcaja1.value;
+        var caja2 = document.f1.txtcaja2.value;
+        if (caja1 == "" && caja2 != ""){
+          document.f1.txtcaja1.value = caja2 + sigMas;
+          document.f1.txtcaja2.value = "";
+        }
+        else{
+          document.f1.txtcaja1.value = caja1 + caja2 + sigMas;
+          document.f1.txtcaja2.value = "";
+        }
+      }
+
+      function calcular(){
+        var caja1 = document.f1.txtcaja1.value;
+        var caja2 = document.f1.txtcaja2.value;
+        document.f1.txtcaja2.value = eval(caja1 + caja2);
+        document.f1.txtcaja1.value = "";
+      }
+
+
+ 
+       
     </script>
   </body>
 </html>
+ 

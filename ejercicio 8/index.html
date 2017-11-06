@@ -6,7 +6,7 @@ el valor llegue a cero y cambiar el texto de bomba por
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>hola</title>
   </head>
   <body>
     <h1> !!! La bomba !!! </h1>
@@ -16,9 +16,18 @@ el valor llegue a cero y cambiar el texto de bomba por
         var timer = timer_tag.innerHTML;
         timer = parseInt(timer);
         setInterval(function(){
-          timer = timer - 1
-          timer_tag.innerHTML = timer
+           if (timer > 0) {
+            timer = timer - 1
+            timer_tag.innerHTML = timer
+
+            if(timer === 0){
+              alert('BOOM!!')
+            }
+          }
+          
         }, 1000);
+
+        /* se va a ejecutar el setInterval cada un segundo*/
     </script>
   </body>
 </html>
